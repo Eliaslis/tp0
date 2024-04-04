@@ -84,6 +84,7 @@ void leer_consola(t_log* logger)
 		leido = readline("> ");
 
 		if(!strcmp(leido, "")){
+			free(leido);
 			break;
 		}
 
@@ -105,6 +106,7 @@ void paquete(int conexion)
 		leido = readline("> ");
 
 		if(!strcmp(leido, "")){
+			free(leido);
 			break;
 		}
 
