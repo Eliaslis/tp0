@@ -108,3 +108,18 @@ void liberar_conexion(int socket_cliente)
 {
 	close(socket_cliente);
 }
+
+void enviar_handshake(t_log* logger, int fd,int32_t handshake_a_enviar){
+    size_t bytes;
+    int32_t result;
+
+    bytes = send(fd, &handshake_a_enviar, sizeof(int32_t), 0);
+    bytes = recv(fd, &result, sizeof(int32_t), MSG_WAITALL);
+
+    if (result == 0) {
+        log_info(logger, "Handshake OK");
+    } else {
+        log_error(logger, "Handshake ERROR");
+		exit(-1);
+    }
+}

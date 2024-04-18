@@ -49,6 +49,7 @@ int main(void)
 	conexion = crear_conexion(ip, puerto);
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
+	enviar_handshake(logger, conexion,0);
 
 	enviar_mensaje(valor,conexion);
 

@@ -22,7 +22,7 @@ typedef enum
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);
-
+void recibir_handshake(int,int32_t);
 int iniciar_servidor(void);
 int esperar_cliente(int);
 t_list* recibir_paquete(int);

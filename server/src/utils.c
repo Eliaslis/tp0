@@ -99,3 +99,18 @@ t_list* recibir_paquete(int socket_cliente)
 	free(buffer);
 	return valores;
 }
+
+void recibir_handshake(int fd,int32_t handshake_esperado){
+    size_t bytes;
+
+    int32_t handshake_recibido;
+    int32_t resultOk = 0;
+    int32_t resultError = -1;
+
+    bytes = recv(fd, &handshake_recibido, sizeof(int32_t), MSG_WAITALL);
+    if (handshake_recibido == handshake_esperado) {
+        bytes = send(fd, &resultOk, sizeof(int32_t), 0);
+    } else {
+        bytes = send(fd, &resultError, sizeof(int32_t), 0);
+    }
+}
